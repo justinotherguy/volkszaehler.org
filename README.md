@@ -24,7 +24,7 @@ Start database server and create the database:
     docker run --name db -e MYSQL_ROOT_PASSWORD=R00t+ mysql
     docker run --link db mysql -u root -pR00t+ -h db -e "CREATE DATABASE volkszaehler;"
 
-Create `docker.conf.php`, mount into the volkszaehler container and initialize the database schema:
+Modify `volkszaehler.conf.php` to fit your environment and save it as `docker.conf.php`, mount into the volkszaehler container and initialize the database schema:
 
     docker run --link db -v $(pwd)/etc/docker.conf.php:/vz/etc/volkszaehler.conf.php volkszaehler/volkszaehler /vz/bin/doctrine orm:schema-tool:create
 
